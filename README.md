@@ -16,6 +16,7 @@ Feel free to strip any CVR specific stuff and utilize in your own Unity projects
 
 # Planned
 * Locomotion Control (toggle move/rotate)
+* IK Control (toggle IK or parts of it off)
 
 # Not Sure
 * Layer Weight Control (blend animator layer weights)
