@@ -1,23 +1,23 @@
 # StateBehaviors
 WIP ChilloutVR mod that adds local State Behaviors for avatar creators.
+
 This is local only. 
-
 Custom state behaviors will not run for remote users with this mod.
-
-Feel free to strip any CVR specific stuff and utilize in your own Unity projects.
 
 ## WIP
 ### Parameter Driver:
 * OnStateEnter : Set, Add/Subtract, Random, Copy
 * OnStateExit : Set, Add/Subtract, Random, Copy
-* OnStateUpdate : PlayTime, NormalizedTime
+* OnStateUpdate : PlayTime, NormalizedTime, Lerp
 
-![image](https://user-images.githubusercontent.com/37721153/199696947-bbf097ed-4d66-45e3-9830-7f4ae0aa0823.png)
+### Locomotion Control:
+* Ability to freeze movement or rotation on command.
+* Enable flight in worlds that allow it.
 
-# Planned
-* Locomotion Control (toggle move/rotate)
+# Planned (awaiting future IK updates)
 * IK Control (toggle IK or parts of it off)
 
 # Not Sure
 * Layer Weight Control (blend animator layer weights)
-* Goto State (tell animator to jump to a state in a layer)
+* Goto State (tell animator to jump to a state in specified layer)
+* Write Movement (use parameter input to move player, might be better to use OSC mod..?)
