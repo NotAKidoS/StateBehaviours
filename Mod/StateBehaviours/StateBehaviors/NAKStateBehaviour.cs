@@ -7,5 +7,10 @@ namespace NAK.StateBehaviors
     //will allow me to strip from remote players easier
     public class NAKStateBehaviour : StateMachineBehaviour
     {
+        public enum UpdateModes
+        {
+            OnEnter,
+            OnExit,
+        }
     }
 }

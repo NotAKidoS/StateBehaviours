@@ -12,6 +12,7 @@ using ABI_RC.Core.Player;
 //POTENTIAL FLAW
 //Anything that calls SetAnimatorParameterFromFloat() will set the local players parameters!
 
+
 public class LocalAnimatorManager : MonoBehaviour
 {
     public static LocalAnimatorManager Instance;
