@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StateBehaviors", "StateBehaviors.csproj", "{5BC9CB8A-23BE-438B-95DB-8646956C194F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StateBehaviours", "StateBehaviours.csproj", "{5BC9CB8A-23BE-438B-95DB-8646956C194F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,26 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-using UnityEngine.Serialization;
-using Random = UnityEngine.Random;
+﻿using UnityEngine;
 
 //TODO: add error catching or verification of broken drivers/parameters
 
-namespace NAK.StateBehaviors.ParameterDriver
+namespace NAK.StateBehaviours.ParameterDriver
 {
     public class NAKUpdateDriver : NAKStateBehaviour
     {
 
         //theres only few things that seem "ok" for OnUpdate...
-        public List<DriverType> driverType;
+        public List<DriverTypes> driverType;
+        //base
         public List<string> settingName;
+        public List<float> settingValue;
         //lerp
-        public List<string> lerpSource;
-        public List<float> lerpSpeed;
+        public List<string> sourceName;
+        public List<float> sourceValue;
 
         //driver types for OnUpdate
-        public enum DriverType
+        public enum DriverTypes
         {
             PlayTime = 0,
             NormalizedTime,
@@ -30,7 +27,7 @@ namespace NAK.StateBehaviors.ParameterDriver
         public void Awake()
         {
             //punishment
-            if (settingName.Count == 0) 
+            if (settingName.Count == 0)
                 Destroy(this);
         }
 
@@ -46,14 +43,14 @@ namespace NAK.StateBehaviors.ParameterDriver
                 if (settingName[i] == "") continue;
                 switch (driverType[i])
                 {
-                    case DriverType.PlayTime:
+                    case DriverTypes.PlayTime:
                         LocalAnimatorManager.Instance.SetAnimatorParameterFromFloat(settingName[i], stateInfo.normalizedTime);
                         break;
-                    case DriverType.NormalizedTime:
+                    case DriverTypes.NormalizedTime:
                         LocalAnimatorManager.Instance.SetAnimatorParameterFromFloat(settingName[i], stateInfo.normalizedTime % 1);
                         break;
-                    case DriverType.Lerp:
-                        float smooth = getLerpedParameter(animator, settingName[i], lerpSource[i], lerpSpeed[i]);
+                    case DriverTypes.Lerp:
+                        float smooth = getLerpedParameter(animator, settingName[i], sourceName[i], sourceValue[i]);
                         LocalAnimatorManager.Instance.SetAnimatorParameterFromFloat(settingName[i], smooth);
                         break;
                     default:
@@ -63,15 +60,15 @@ namespace NAK.StateBehaviors.ParameterDriver
         }
 
         //*ima be honest i have no fucking idea how to do lerp right so im just winging it*
-        internal float getLerpedParameter(Animator animator, string settingName, string sourceName, float lerpSpeed)
+        internal float getLerpedParameter(Animator animator, string settingName, string sourceName, float sourceValue)
         {
             float settingVal = animator.GetFloat(settingName);
             float sourceVal = animator.GetFloat(sourceName);
-            if (Math.Abs(sourceVal-settingVal) < 0.01f)
+            if (Math.Abs(sourceVal - settingVal) < 0.01f)
             {
                 return sourceVal;
             }
-            return Mathf.Lerp(settingVal, sourceVal, lerpSpeed*Time.deltaTime );
+            return Mathf.Lerp(settingVal, sourceVal, sourceValue * Time.deltaTime);
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 //TODO: add error catching or verification of broken drivers/parameters
@@ -8,7 +11,6 @@ namespace NAK.StateBehaviors.ParameterDriver
     public class NAKSimpleDriver : NAKStateBehaviour
     {
         //lists of custom classes in mod dll dont deserialize properly, so uh...
-
         //OnEnter or OnExit
         public List<UpdateModes> updateMode;
         //set & add
@@ -27,7 +29,7 @@ namespace NAK.StateBehaviors.ParameterDriver
         public List<float> srcMax;
         public List<float> dstMin;
         public List<float> dstMax;
-
+        
         public enum DriverTypes
         {
             Set = 0,
@@ -39,14 +41,8 @@ namespace NAK.StateBehaviors.ParameterDriver
         public void Awake()
         {
             //punishment
-            if (settingName.Count == 0)
+            if (settingName.Count == 0) 
                 Destroy(this);
-
-            //I could probably optimize stuff if i parsed the lists and assigned class subclass with different action
-            //that way i dont need to check what driver type, parameter type, ect each run
-            //and optimize OnEnter and OnExit check
-
-            //... but not now- and not until i figure out why CVR will instantiate like 3 of these each???
         }
 
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -64,6 +60,7 @@ namespace NAK.StateBehaviors.ParameterDriver
             {
                 if (settingName[i] == "") continue;
                 if ((updateMode[i] == UpdateModes.OnEnter) != onEnter) continue;
+
                 switch (driverType[i])
                 {
                     //supports float, int, bool, trigger (trigger doesnt reset)
@@ -97,18 +94,18 @@ namespace NAK.StateBehaviors.ParameterDriver
             AnimatorControllerParameterType type = LocalAnimatorManager.Instance.GetAnimatorParameterType(sourceName);
             switch (type)
             {
-                case AnimatorControllerParameterType.Float:
-                    curValue += animator.GetFloat(sourceName);
-                    break;
-                case AnimatorControllerParameterType.Int:
-                    curValue += (float)animator.GetInteger(sourceName);
-                    break;
-                case AnimatorControllerParameterType.Bool:
-                    curValue += animator.GetBool(sourceName) ? 1.0f : 0.0f;
-                    break;
-                case AnimatorControllerParameterType.Trigger:
-                    //there is no way to get a triggers current value
-                    break;
+            case AnimatorControllerParameterType.Float:
+                curValue += animator.GetFloat(sourceName);
+                break;
+            case AnimatorControllerParameterType.Int:
+                curValue += (float)animator.GetInteger(sourceName);
+                break;
+            case AnimatorControllerParameterType.Bool:
+                curValue += animator.GetBool(sourceName) ? 1.0f : 0.0f;
+                break;
+            case AnimatorControllerParameterType.Trigger:
+                //there is no way to get a triggers current value
+                break;
             }
             return curValue;
         }
@@ -119,50 +116,46 @@ namespace NAK.StateBehaviors.ParameterDriver
             float randValue = 0f;
             switch (type)
             {
-                case AnimatorControllerParameterType.Float:
-                    randValue = Random.Range(min, max);
-                    break;
-                case AnimatorControllerParameterType.Int:
-                    randValue = Random.Range(min, max);
-                    break;
-                case AnimatorControllerParameterType.Bool:
-                    randValue = (Random.value > chance) ? 1f : 0f;
-                    break;
-                case AnimatorControllerParameterType.Trigger:
-                    randValue = (Random.value > chance) ? 1f : 0f;
-                    break;
+            case AnimatorControllerParameterType.Float:
+                randValue = Random.Range(min, max);
+                break;
+            case AnimatorControllerParameterType.Int:
+                randValue = Random.Range(min, max);
+                break;
+            case AnimatorControllerParameterType.Bool:
+                randValue = (Random.value > chance) ? 1f : 0f;
+                break;
+            case AnimatorControllerParameterType.Trigger:
+                randValue = (Random.value > chance) ? 1f : 0f;
+                break;
             }
             return randValue;
         }
 
         //returns the sourceName parameter after its been modified as a float
         //taken from https://github.com/lyuma/Av3Emulator - MIT License
-        internal float getAdjustedParameterAsFloat(Animator animator, string sourceName, bool convertRange = false, float srcMin = 0.0f, float srcMax = 0.0f, float dstMin = 0.0f, float dstMax = 0.0f)
+        internal float getAdjustedParameterAsFloat(Animator animator, string sourceName, bool convertRange=false, float srcMin=0.0f, float srcMax=0.0f, float dstMin=0.0f, float dstMax=0.0f) 
         {
             float newValue = 0;
             AnimatorControllerParameterType type = LocalAnimatorManager.Instance.GetAnimatorParameterType(sourceName);
             switch (type)
             {
-                case AnimatorControllerParameterType.Float:
-                    newValue = animator.GetFloat(sourceName);
-                    break;
-                case AnimatorControllerParameterType.Int:
-                    newValue = (float)animator.GetInteger(sourceName);
-                    break;
-                case AnimatorControllerParameterType.Bool:
-                    newValue = animator.GetBool(sourceName) ? 1.0f : 0.0f;
-                    break;
-                case AnimatorControllerParameterType.Trigger:
-                    break;
+            case AnimatorControllerParameterType.Float:
+                newValue = animator.GetFloat(sourceName);
+                break;
+            case AnimatorControllerParameterType.Int:
+                newValue = (float)animator.GetInteger(sourceName);
+                break;
+            case AnimatorControllerParameterType.Bool:
+                newValue = animator.GetBool(sourceName) ? 1.0f : 0.0f;
+                break;
+            case AnimatorControllerParameterType.Trigger:
+                break;
             }
-            if (convertRange)
-            {
-                if (dstMax != dstMin)
-                {
+            if (convertRange) {
+                if (dstMax != dstMin) {
                     newValue = Mathf.Lerp(dstMin, dstMax, Mathf.Clamp01(Mathf.InverseLerp(srcMin, srcMax, newValue)));
-                }
-                else
-                {
+                } else {
                     newValue = dstMin;
                 }
             }

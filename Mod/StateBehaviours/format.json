@@ -1,23 +1,24 @@
 {
-  "_id": 106,
-  "name": "Blackout",
-  "modversion": "1.0.3",
+  "_id": -1,
+  "name": "StateBehaviours",
+  "modversion": "1.0.0",
   "gameversion": "2022r169p1",
-  "loaderversion": "0.5.5",
+  "loaderversion": "0.5.7",
   "modtype": "Mod",
   "author": "NotAKidoS",
-  "description": "Dim screen after set time of sitting still. Should be nice for VR sleeping.\n\nNotable Options:\n Cap FPS while sleeping.\nManual control via UIX\nConfigurable dimming strength.",
+  "description": "Adds a couple State Machine Behaviours for avatar creators to tinker with until native solutions are released.\n\nSimple Driver (OnEnter, OnExit)\nSet, Add, Random, Copy\n\nUpdate Driver (OnUpdate)\nPlayTime, NormalizedTime, Lerp\n\nBody Control (OnEnter, OnExit)\nToggle VRIK limb(s) weight or autofootstep.\n\nThese behaviours are **Local Only** and only function on your own avatar.\nYou will need to download the accompanying Unitypackage under **Requirments** to add and upload with in Unity.",
   "searchtags": [
-    "black",
-    "dimmer",
-    "sleeping",
-    "sleeper"
+    "parameter",
+    "driver",
+    "unity",
+    "behavior",
+    "state"
   ],
   "requirements": [
-    "None"
+    "[NAK.StateBehaviours Unitypackage](https://github.com/NotAKidOnSteam/StateBehaviours/)"
   ],
-  "downloadlink": "https://github.com/NotAKidOnSteam/Blackout/releases/download/r4/Blackout.dll",
-  "sourcelink": "https://github.com/NotAKidOnSteam/Blackout/",
-  "changelog": "Fixed rendering in every camera other than player camera. Should now behave in both automatic and manual modes.",
+  "downloadlink": "https://github.com/NotAKidOnSteam/StateBehaviours/releases/download/r1/StateBehaviours.dll",
+  "sourcelink": "https://github.com/NotAKidOnSteam/StateBehaviours/",
+  "changelog": "Initial release.",
   "embedcolor": "#161b22"
 }

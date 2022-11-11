@@ -3,11 +3,11 @@ using ABI_RC.Core.Player;
 using MelonLoader;
 using UnityEngine;
 
-namespace NAK.StateBehaviors;
+namespace NAK.StateBehaviours;
 
 public class StateBehaviorsMod : MelonMod
 {
-    public override void OnApplicationStart()
+    public override void OnInitializeMelon()
     {
         MelonLoader.MelonCoroutines.Start(WaitForLocalPlayer());
     }
@@ -16,7 +16,6 @@ public class StateBehaviorsMod : MelonMod
     {
         while (PlayerSetup.Instance == null)
             yield return null;
-
         PlayerSetup.Instance.gameObject.AddComponent<LocalAnimatorManager>();
     }
 }

@@ -3,9 +3,9 @@ using HarmonyLib;
 using MelonLoader;
 using System.Collections;
 using UnityEngine;
-using NAK.StateBehaviors.ParameterDriver;
+using NAK.StateBehaviours.ParameterDriver;
 
-namespace NAK.StateBehaviors;
+namespace NAK.StateBehaviours;
 
 [HarmonyPatch]
 internal class HarmonyPatches

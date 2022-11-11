@@ -16,8 +16,6 @@ using AnimatorControllerParameterType = UnityEngine.AnimatorControllerParameterT
 
 namespace NAK.StateBehaviors.ParameterDriver
 {
-
-
     [CustomEditor(typeof(NAKSimpleDriver))]
     public class NAKSimpleDriverEditor : Editor
     {
@@ -28,23 +26,6 @@ namespace NAK.StateBehaviors.ParameterDriver
                 selectionRect = GUI.skin.GetStyle("selectionRect"),
                 helpBox = GUI.skin.GetStyle("helpbox");
         }
-
-        //store this in global scriptable object to reduce memory nuke...?
-        private static HashSet<string> coreParameters = new HashSet<string>
-        {
-            "MovementX",
-            "MovementY",
-            "Grounded",
-            "Emote",
-            "GestureLeft",
-            "GestureRight",
-            "Toggle",
-            "Sitting",
-            "Crouching",
-            "CancelEmote",
-            "Prone",
-            "Flying"
-        };
 
         public NAKSimpleDriver Driver;
         int selected = -1;
@@ -83,7 +64,7 @@ namespace NAK.StateBehaviors.ParameterDriver
             foreach(var parameter in controller.parameters) //imagine not having parameterCount -_-
             {
                 //dont log any built in CVR parameters
-                if (coreParameters.Contains(parameter.name)) continue;
+                //if (coreParameters.Contains(parameter.name)) continue;
 
                 //add to indicies dictionary
                 if (!parameterList.ContainsKey(parameter.name))

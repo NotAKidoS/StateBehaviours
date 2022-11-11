@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using ABI_RC.Core.Player;
 
-//This monobehavior is here for testing in Unity. 
-//Replicated the basics of ChilloutVR's AnimatorManager that I'll need to patch if I can make this a mod.
-//Might update to support testing multiple avatars at once in Unity... but im lazy.
-
-//only addition is animatorParameterTypes dictionary
-
 //POTENTIAL FLAW
 //Anything that calls SetAnimatorParameterFromFloat() will set the local players parameters!
 
+//a lot of the internals need to be completely redone:
+
+//Experimental prop/world support. (really any animator)
+//Better caching of parameter types & LookAtIK (for BodyControl)
+//Optimize when AnalyzeController() is done.
+
+namespace NAK.StateBehaviours;
 
 public class LocalAnimatorManager : MonoBehaviour
 {
