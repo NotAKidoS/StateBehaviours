@@ -10,12 +10,13 @@ Custom state behaviors will not run for remote users with this mod.
 * OnStateExit : Set, Add/Subtract, Random, Copy
 * OnStateUpdate : PlayTime, NormalizedTime, Lerp
 
-### Locomotion Control:
+### Body Control:
+* IK toggles for different parts of body.
+
+### Input Control:
 * Ability to freeze movement or rotation on command.
 * Enable flight in worlds that allow it.
-
-# Planned (awaiting future IK updates)
-* IK Control (toggle IK or parts of it off)
+* Ability to force movement & input...?
 
 # Not Sure
 * Layer Weight Control (blend animator layer weights)
