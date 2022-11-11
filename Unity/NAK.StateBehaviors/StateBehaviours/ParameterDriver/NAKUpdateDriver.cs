@@ -4,7 +4,7 @@ using UnityEngine;
 
 //TODO: add error catching or verification of broken drivers/parameters
 
-namespace NAK.StateBehaviors.ParameterDriver
+namespace NAK.StateBehaviours.ParameterDriver
 {
     public class NAKUpdateDriver : NAKStateBehaviour
     {

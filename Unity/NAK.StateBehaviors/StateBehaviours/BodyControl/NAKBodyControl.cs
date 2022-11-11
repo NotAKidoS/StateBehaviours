@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace NAK.StateBehaviors.BodyControl
+namespace NAK.StateBehaviours.BodyControl
 {
     public class NAKBodyControl : NAKStateBehaviour
     {
         public UpdateModes updateMode;
-
         public ControlMode TrackingAll;
         public ControlMode TrackingHead;
         public ControlMode TrackingLeftArm;

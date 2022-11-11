@@ -14,7 +14,7 @@ using AnimatorControllerParameterType = UnityEngine.AnimatorControllerParameterT
 
 //TODO: Implement chance value selection for random bool & trigger types
 
-namespace NAK.StateBehaviors.ParameterDriver
+namespace NAK.StateBehaviours.ParameterDriver
 {
     [CustomEditor(typeof(NAKUpdateDriver))]
     public class NAKUpdateDriverEditor : Editor
