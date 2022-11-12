@@ -234,7 +234,7 @@ namespace NAK.StateBehaviours.ParameterDriver
                     //setting value
                     GUILayout.BeginHorizontal();
                     EditorGUILayout.LabelField("Lerp Speed:", GUILayout.Width(100));
-                    Driver.settingValue[i] = EditorGUILayout.FloatField(Driver.settingValue[i]);
+                    Driver.sourceValue[i] = EditorGUILayout.FloatField(Driver.sourceValue[i]);
                     GUILayout.EndHorizontal();
                     GUILayout.Space(10);
                     break;
