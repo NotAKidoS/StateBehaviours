@@ -1,7 +1,7 @@
 {
   "_id": -1,
   "name": "StateBehaviours",
-  "modversion": "1.0.0",
+  "modversion": "1.0.1",
   "gameversion": "2022r169p1",
   "loaderversion": "0.5.7",
   "modtype": "Mod",
@@ -17,8 +17,8 @@
   "requirements": [
     "[NAK.StateBehaviours Unitypackage](https://github.com/NotAKidOnSteam/StateBehaviours/)"
   ],
-  "downloadlink": "https://github.com/NotAKidOnSteam/StateBehaviours/releases/download/r1/StateBehaviours.dll",
+  "downloadlink": "https://github.com/NotAKidOnSteam/StateBehaviours/releases/download/r1.0.1/StateBehaviours.dll",
   "sourcelink": "https://github.com/NotAKidOnSteam/StateBehaviours/",
-  "changelog": "Initial release.",
+  "changelog": "Fix add & chance%... buh.",
   "embedcolor": "#161b22"
 }
