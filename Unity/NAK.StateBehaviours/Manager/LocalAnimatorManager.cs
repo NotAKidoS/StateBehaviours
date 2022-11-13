@@ -84,14 +84,11 @@ namespace NAK.StateBehaviours
                     LocalAnimatorManager.Instance.SetAnimatorParameterInt(name, (int)value);
                     break;
                 case AnimatorControllerParameterType.Bool:
-                    LocalAnimatorManager.Instance.SetAnimatorParameterBool(name, value>0);
+                    LocalAnimatorManager.Instance.SetAnimatorParameterBool(name, value>0.5f);
                     break;
                 case AnimatorControllerParameterType.Trigger:
-                    if (value>0)
-                    {
+                    if (value>0.5f)
                         LocalAnimatorManager.Instance.SetAnimatorParameterTrigger(name);
-                        break;
-                    }
                     break;
             }
         }

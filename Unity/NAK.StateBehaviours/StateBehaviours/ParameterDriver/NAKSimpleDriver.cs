@@ -70,7 +70,7 @@ namespace NAK.StateBehaviours.ParameterDriver
                     //supports float, int, bool, trigger (trigger doesnt reset)
                     case DriverTypes.Add:
                         float addedValue = getAddedParameterAsFloat(animator, settingName[i], settingValue[i]);
-                        LocalAnimatorManager.Instance.SetAnimatorParameterFromFloat(settingName[i], settingValue[i]);
+                        LocalAnimatorManager.Instance.SetAnimatorParameterFromFloat(settingName[i], addedValue);
                         break;
                     //supports float, int, bool, trigger (trigger doesnt reset)
                     case DriverTypes.Random:
@@ -123,10 +123,8 @@ namespace NAK.StateBehaviours.ParameterDriver
                 randValue = Random.Range(min, max);
                 break;
             case AnimatorControllerParameterType.Bool:
-                randValue = (Random.value > chance) ? 1f : 0f;
-                break;
             case AnimatorControllerParameterType.Trigger:
-                randValue = (Random.value > chance) ? 1f : 0f;
+                randValue = (Random.value < chance) ? 1f : 0f;
                 break;
             }
             return randValue;

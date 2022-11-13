@@ -42,7 +42,6 @@ public class LocalAnimatorManager : MonoBehaviour
         //might need catch here...
         return animatorParameterTypes[name];
     }
-
     public void SetAnimatorParameterFromFloat(string name, float value)
     {
         AnimatorControllerParameterType type = LocalAnimatorManager.Instance.GetAnimatorParameterType(name);
@@ -58,7 +57,7 @@ public class LocalAnimatorManager : MonoBehaviour
                 PlayerSetup.Instance.animatorManager.SetAnimatorParameterBool(name, value > 0.5f);
                 break;
             case AnimatorControllerParameterType.Trigger:
-                if (value>0)
+                if (value > 0.5f)
                     PlayerSetup.Instance.animatorManager.SetAnimatorParameterTrigger(name);
                 break;
         }
